@@ -23,7 +23,8 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content:
+          "ウマ娘プリティーダービーの選択したスキルを全て含むサポートカードの組み合わせを調べることができるツールです。"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
