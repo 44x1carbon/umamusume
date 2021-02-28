@@ -33,6 +33,8 @@ export default {
    ** Global CSS
    */
   css: ["bulma-extensions/dist/css/bulma-extensions.min.css"],
+  //Global JS
+  script: ["bulma-extensions/dist/js/bulma-extensions.min.js"],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins

@@ -73,30 +73,49 @@
           </div>
         </div>
       </div>
-      <ul
-        class="column is-4"
-        style="height: calc(100vh - 96px); overflow-y: scroll"
-      >
-        <li
-          v-for="skill in skillList"
-          :key="skill.name"
-          class="media"
-          @click="clickSkill(skill)"
-          :class="{ 'has-background-success-light': isSelect(skill) }"
-        >
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img :src="skill.iconUrl" alt="" srcset="" />
-            </figure>
-          </div>
-          <div class="media-content">
-            <p class="title is-6">
-              {{ skill.name }} スキルpt:{{ skill.skillPoint }}
-            </p>
-            <p class="subtitle is-6">{{ skill.description }}</p>
-          </div>
-        </li>
-      </ul>
+      <div class="column is-4">
+        <!-- <section class="accordions">
+          <article class="accordion is-active">
+            <div class="accordion-header toggle">
+              <p>スキル絞り込み</p>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                <div class="field">
+                  <label class="label">Label</label>
+                  <div class="control">
+                    <label class="checkbox">
+                      <input type="checkbox" />
+                      Remember me
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section> -->
+        <ul style="height: calc(100vh - 96px); overflow-y: scroll">
+          <li
+            v-for="skill in skillList"
+            :key="skill.name"
+            class="media"
+            @click="clickSkill(skill)"
+            :class="{ 'has-background-success-light': isSelect(skill) }"
+          >
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img :src="skill.iconUrl" alt="" srcset="" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-6">
+                {{ skill.name }} スキルpt:{{ skill.skillPoint }}
+              </p>
+              <p class="subtitle is-6">{{ skill.description }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -109,10 +128,12 @@ export default {
   name: "App",
   data() {
     return {
-      skillList: skillList().sort((a, b) => a.name.localeCompare(b.name)),
       selectSkill: [],
       onlyHasCard: false,
     };
+  },
+  mounted() {
+    // var accordions = bulmaAccordion.attach();
   },
   methods: {
     isSelect(skill) {
@@ -128,6 +149,11 @@ export default {
     },
   },
   computed: {
+    skillList() {
+      return skillList(
+        this.onlyHasCard ? this.hasSupportCards : this.supportCards
+      ).sort((a, b) => a.name.localeCompare(b.name));
+    },
     combinationList() {
       return calcCombination(
         this.selectSkill,

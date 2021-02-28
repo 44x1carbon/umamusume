@@ -12,10 +12,10 @@ const uniq = (list, fn) => {
   return Object.values(result);
 };
 
-export const skillList = () => {
+export const skillList = supportCards => {
   return uniq(
     [].concat(
-      ...database.map(supportCard =>
+      ...supportCards.map(supportCard =>
         [].concat(
           supportCard.possessionSkills,
           supportCard.trainingEventsSkills
