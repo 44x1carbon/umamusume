@@ -10,9 +10,11 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "generatorics": "^1.1.0",
     "@nuxtjs/bulma": "^1.2.7",
-    "nuxt": "^2.13.0"
+    "bulma-extensions": "^6.2.7",
+    "generatorics": "^1.1.0",
+    "nuxt": "^2.13.0",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@nuxtjs/google-analytics": "^2.4.0"

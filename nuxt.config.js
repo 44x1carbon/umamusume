@@ -31,12 +31,15 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["bulma-extensions/dist/css/bulma-extensions.min.css"],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: [
+    // https://github.com/robinvdvleuten/vuex-persistedstate
+    { src: "~/plugins/persistedState.client.js" }
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components

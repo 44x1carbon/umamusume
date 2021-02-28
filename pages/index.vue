@@ -1,10 +1,25 @@
 <template>
-  <div id="app">
-    <div style="margin: 16px">
-      <h1 class="is-size-1">ウマ娘プリティーダービー 編成サポートツール</h1>
-      <p>
+  <div>
+    <article class="message is-success">
+      <div class="message-header">
+        <p>組み合わせ検索</p>
+      </div>
+      <div class="message-body">
         選択したスキルを全て含むサポートカードの組み合わせを調べることができます。
-      </p>
+      </div>
+    </article>
+    <div style="padding: 16px">
+      <div class="field">
+        <input
+          id="only-has-card"
+          type="checkbox"
+          class="switch"
+          v-model="onlyHasCard"
+        />
+        <label for="only-has-card"
+          >所持しているカードから組み合わせを調べる</label
+        >
+      </div>
     </div>
     <div class="columns">
       <div
@@ -88,6 +103,7 @@
 
 <script>
 import { calcCombination, skillList } from "../index";
+import { mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -95,6 +111,7 @@ export default {
     return {
       skillList: skillList().sort((a, b) => a.name.localeCompare(b.name)),
       selectSkill: [],
+      onlyHasCard: false,
     };
   },
   methods: {
@@ -112,8 +129,12 @@ export default {
   },
   computed: {
     combinationList() {
-      return calcCombination(this.selectSkill);
+      return calcCombination(
+        this.selectSkill,
+        this.onlyHasCard ? this.hasSupportCards : this.supportCards
+      );
     },
+    ...mapGetters(["hasSupportCards", "supportCards"]),
   },
 };
 </script>
