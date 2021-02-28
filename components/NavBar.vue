@@ -4,6 +4,9 @@
       <div class="navbar-start">
         <NuxtLink to="/" class="navbar-item">組み合わせ検索</NuxtLink>
         <NuxtLink to="/hascard" class="navbar-item">所持カード管理</NuxtLink>
+        <NuxtLink to="/hascarddetail" class="navbar-item"
+          >所持カード詳細</NuxtLink
+        >
       </div>
 
       <div class="navbar-end"></div>
